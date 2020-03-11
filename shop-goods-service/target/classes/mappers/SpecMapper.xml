@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wangxinlong.shop.dao.SpecMapper">
+	
+	<!-- 查询spec -->
+	<select id="list" resultMap="listMap">
+		select * from hg_spec
+		<where>
+			<if test="value!=null and value!=''">
+				spec_name like '%${value}%'
+			</if>
+		</where>
+	</select>	
+	<resultMap type="Spec" id="listMap">
+		<id column="id" property="id"/>
+		<result column="spec_name" property="specName"/>
+		<collection property="options" select="querySpecOptions" column="id">
+			
+		</collection>
+	</resultMap>
+	
+	<select id="querySpecOptions" resultType="SpecOption">
+		SELECT id,option_name as optionName,spec_id as specId ,orders
+   		  FROM hg_spec_option WHERE spec_id=#{value}
+	</select>
+	
+	
+	<!-- 添加spec -->
+	<insert id="addSpec" useGeneratedKeys="true" keyProperty="id">
+		insert into hg_spec value(DEFAULT,#{specName})
+	</insert>
+	
+	<!-- 添加specOption -->
+	<insert id="addSpecOption">
+		insert into hg_spec_option values
+		<foreach collection="options" item="option" separator=",">
+			(DEFAULT,#{option.optionName},#{id},#{option.orders})
+		</foreach>
+	</insert>
+	
+	<!-- 删除spec -->
+	<delete id="deleteSpec">
+		delete from hg_spec where id in(${value})
+	</delete>
+	
+	
+	<!-- 删除specOption -->
+	<delete id="deleteSpecOptions">
+		delete from hg_spec_option where spec_id in(${value})
+	</delete>
+	
+	
+	<!-- 通过id查找spec -->
+	<select id="querySpecById" resultMap="querySpecByIdMap">
+		select hg_spec.*,hg_spec_option.* from hg_spec left join hg_spec_option on hg_spec.id=hg_spec_option.spec_id where hg_spec.id=${value} 
+	</select>
+	<resultMap type="Spec" id="querySpecByIdMap">
+		<id column="id" property="id"/>
+		<result column="spec_name" property="specName"/>
+		<collection property="options" ofType="SpecOption">
+			<id property="id" column="id1"/>
+			<result property="optionName" column="option_name"/>
+			<result property="specId" column="spec_id"/>
+			<result property="orders" column="orders"/>
+		</collection>
+	</resultMap>
+	
+	<!-- <select id="querySpecByIdOptions" resultType="SpecOption">
+		SELECT id,option_name as optionName,spec_id as specId ,orders
+   		  FROM hg_spec_option WHERE spec_id=#{value}
+	</select> -->
+	
+	
+	<!-- 修改spec -->
+	<update id="updateSpec">
+		update hg_spec set spec_name=#{specName} where id=${id}
+	</update>
+	
+	<!-- 删除specOption -->
+	<delete id="deleteSpecOptionsBySpecId">
+		delete from hg_spec_option where spec_id =${value}
+	</delete>
+</mapper>

@@ -1,8 +1,14 @@
 package com.wangxinlong.shop.service.impl;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.apache.dubbo.config.annotation.Service;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.wangxinlong.shop.dao.GoodsMapper;
 import com.wangxinlong.shop.pojo.Brand;
 import com.wangxinlong.shop.pojo.Category;
 import com.wangxinlong.shop.service.GoodsService;
@@ -10,58 +16,40 @@ import com.wangxinlong.shop.service.GoodsService;
 @Service
 public class GoodsServiceImpl implements GoodsService{
 
+	@Resource
+	private GoodsMapper goodsMapper;
+	
 	@Override
 	public boolean addBrand(Brand brand) {
 		// TODO Auto-generated method stub
-		return false;
+		return goodsMapper.addBrand(brand)>0;
 	}
 
 	@Override
 	public boolean updateBrand(Brand brand) {
 		// TODO Auto-generated method stub
-		return false;
+		return goodsMapper.updateBrand(brand)>0;
 	}
 
 	@Override
-	public boolean deleteBrand(Integer id) {
+	public boolean deleteBrand(String ids) {
 		// TODO Auto-generated method stub
-		return false;
+		return goodsMapper.deleteBrand(ids)>0;
 	}
 
 	@Override
 	public PageInfo<Brand> listBrand(String firstChar, Integer pageNum) {
 		// TODO Auto-generated method stub
-		return null;
+		PageHelper.startPage(pageNum, 5);
+		List<Brand> list = goodsMapper.listBrand(firstChar);
+		return new PageInfo<Brand>(list);
 	}
 
 	@Override
-	public boolean addCategory(Category Category) {
+	public Brand toUpdateBrand(Integer id) {
 		// TODO Auto-generated method stub
-		return false;
+		return goodsMapper.toUpdateBrand(id);
 	}
 
-	@Override
-	public boolean updateCategory(Category Category) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean deleteCategory(Integer id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public PageInfo<Brand> listCategory(String firstChar, Integer pageNum) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PageInfo<Brand> listCategory() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 }

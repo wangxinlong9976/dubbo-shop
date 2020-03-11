@@ -10,22 +10,31 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
     <title>商城管理系统</title>
-
-    <link rel="canonical" href="https://v4.bootcss.com/docs/examples/dashboard/">
-
+	
     <!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="/resource/bootstrap/css/bootstrap.min.css">
+	<link href="/resource/bootstrap4/css/bootstrap.css" rel="stylesheet" />
+
+
 
     <!-- Favicons -->
-<link rel="apple-touch-icon" href="https://v4.bootcss.com/docs/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="https://v4.bootcss.com/docs/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="https://v4.bootcss.com/docs/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<!-- <link rel="manifest" href="https://v4.bootcss.com/docs/assets/img/favicons/manifest.json"> -->
-<link rel="mask-icon" href="https://v4.bootcss.com/docs/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
-<link rel="icon" href="https://v4.bootcss.com/docs/assets/img/favicons/favicon.ico">
-<!-- <meta name="msapplication-config" content="/docs/assets/img/favicons/browserconfig.xml"> -->
-<meta name="theme-color" content="#563d7c">
+	<link rel="apple-touch-icon" href="https://v4.bootcss.com/docs/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+	<link rel="icon" href="https://v4.bootcss.com/docs/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+	<link rel="icon" href="https://v4.bootcss.com/docs/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+	<!-- <link rel="manifest" href="https://v4.bootcss.com/docs/assets/img/favicons/manifest.json"> -->
+	<link rel="mask-icon" href="https://v4.bootcss.com/docs/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+	<link rel="icon" href="https://v4.bootcss.com/docs/assets/img/favicons/favicon.ico">
+	<script type="text/javascript" src="/resource/jquery/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="/resource/bootstrap4/js/bootstrap.js"></script>
+	
+	
+	<script src="/resource/js/jquery-3.2.1.js"></script>    
 
+
+
+<link href="/resource/bootstrap-treeview/css/bootstrap-treeview.css" rel="stylesheet" >    
+<script src="/resource/bootstrap-treeview/js/bootstrap-treeview.js"></script>    
+<meta name="msapplication-config" content="/docs/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#563d7c">
 
     <style>
       .bd-placeholder-img {
@@ -44,10 +53,11 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="/resource/index/dashboard.css" rel="stylesheet">
+    <link href="/resource/css/dashboard.css" rel="stylesheet">
   	<style type="text/css">/* Chart.js */
 		@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}
 	</style>
+
 </head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
@@ -62,43 +72,43 @@
 
 <div class="container-fluid">
   <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar" id="spec_aaa">
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">
+          <li class="nav-item" >
+            <a class="nav-link active" href="#" url="/brand/list" index="1">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-              Dashboard <span class="sr-only">(current)</span>
+              	品牌管理 <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li class="nav-item" >
+            <a class="nav-link" href="#" url="/spec/list" index="2">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-              Orders
+              	规格管理
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li class="nav-item" >
+            <a class="nav-link" href="#" url="/category/list" index="3">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-              Products
+              	商品类别
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#" url="customers" index="4">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
               Customers
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#" url="/spu/list" index="5">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-              Reports
+             	商品管理
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#" url="/sku/list" index="6"> 
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-              Integrations
+              sku管理
             </a>
           </li>
         </ul>
@@ -138,18 +148,64 @@
       </div>
     </nav>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"><div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        
-      </div>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" id="main">
+
     </main>
   </div>
 </div>
-<script src="/resource/index/jquery.js"></script>
-      <!-- <script>window.jQuery || document.write('<script src="/docs/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="Dashboard%20Template%20%C2%B7%20Bootstrap_files/bootstrap.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script> -->
-        <script src="/resource/index/feather.js"></script>
-       <!--  <script src="/resource/index/Chart.js"></script> -->
-       <!--  <script src="/resource/index/dashboard.js"></script> -->
 
+     
+
+<script type="text/javascript">
+var absPath = "/brand/list";
+$(function(){
+	
+	
+	/**
+	 *	cookie设置   定位页面
+	 */
+	var path = getCookie("url");
+	console.log("url:"+path)
+	var index;
+	if(getCookie("index")==""){
+		index=1;
+	}else{
+		index=getCookie("index")
+	}
+	if(path!=""){
+		absPath=path;
+	}
+	
+	$(".nav-link")[index].click();
+	/* $("#main").load(absPath); */
+});
+
+$(".nav-link").click(function(){
+	var url = $(this).attr('url');
+	absPath=url;
+	$('.nav-link').removeClass("active");
+	$(this).addClass("active");
+	
+	console.log(url)
+	document.cookie = "url="+url;
+	document.cookie="index="+$(this).attr("index");
+	$("#main").load(url);
+	
+})	
+/**
+ * 	获取cookie
+ */
+function getCookie(cookie){
+	var arr = document.cookie.split(";");
+	for ( var i in arr) {
+		console.log(arr[0]+":"+arr[1])
+		var values = arr[i].split("=");
+		if(values[0].trim() == cookie){
+			return values[1];
+		}
+	}
+	return "";
+}
+</script>
 </body>
 </html>

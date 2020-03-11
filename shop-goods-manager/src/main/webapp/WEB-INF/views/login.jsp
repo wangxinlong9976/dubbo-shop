@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resource/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resource/bootstrap4/css/bootstrap.min.css">
 
 <style type="text/css">
 	body{
@@ -52,8 +52,8 @@
 		</div>
 	</div>
 </form>
-<script type="text/javascript" src="/resource/bootstrap/jquery.min.1.12.4.js"></script>
-<script type="text/javascript" src="/resource/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/resource/js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="/resource/bootstrap4/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$('#loginBtn').click(function(){

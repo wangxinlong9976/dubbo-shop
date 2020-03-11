@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wangxinlong.shop.dao.SkuMapper">
+	
+	<!-- com.wangxinlong.shop.dao.SpuMapper.querySpuById -->
+	
+	<resultMap type="Sku" id="skuMapper">
+		<id column="id" property="id"></id>
+		
+		<result column="sell_point" property="sellPoint"/>
+		<result column="stock_count" property="stockCount"/>
+		<result column="create_time" property="createTime"/>
+		<result column="update_time" property="updateTime"/>
+		<result column="cost_price" property="costPrice"/>	
+		<result column="market_price" property="marketPrice"/>
+		<result column="spu_id" property="spuId"/>
+		<result column="cart_thumbnail" property="cartThumbnail"/>
+		<association property="spu" column="spu_id" select="com.wangxinlong.shop.dao.SpuMapper.querySpuById"></association>
+		<collection property="specs" column="detailId" select="findSpecsBySkuid"></collection>
+	</resultMap>
+
+	<select id="listSku" resultMap="skuMapper">
+		SELECT * FROM hg_sku ORDER BY spu_id DESC,id DESC
+	</select>
+	<select id="findSpecsBySkuid" resultType="SpecOption">
+			select  spec.id as spec_id, 
+		        spec.spec_name as specName ,
+		        specval.id oid, 
+		        specval.option_name as optionName  
+		       from hg_sku_spec as sku 
+			   LEFT JOIN hg_spec as spec on spec.id= sku.spec_id 
+			   LEFT JOIN hg_spec_option as specval ON specval.id=  sku.spec_option_id
+ 			where sku.sku_id=#{value}
+	</select>
+	
+	<select id="selectSkuById" resultMap="skuMapper">
+		SELECT *,${value} detailId FROM hg_sku where id=${value}
+	</select>
+	
+	
+<!-- 	<insert id="addSku">
+		insert into 
+	</insert> -->
+</mapper>

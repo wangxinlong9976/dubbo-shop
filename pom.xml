@@ -8,6 +8,9 @@
   	<module>shop-goods-interface</module>
   	<module>shop-goods-service</module>
   	<module>shop-goods-manager</module>
+  	<module>shop-user-interface</module>
+  	<module>shop-user-service</module>
+  	<module>shop-user-web</module>
   </modules>
   
   

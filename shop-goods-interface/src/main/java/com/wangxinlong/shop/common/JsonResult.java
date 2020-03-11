@@ -1,7 +1,7 @@
 package com.wangxinlong.shop.common;
 
 public class JsonResult {
-	
+	 
 	private boolean result;
 	private Integer statuCode;
 	private String message;

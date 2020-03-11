@@ -12,10 +12,21 @@ public class Category implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Integer id;		//id;
+	private Integer id;			//id;
 	private Integer parentId;	//父分类的id
+	@JsonProperty("text")
 	private String name;		//分类的名称
 	private String path;		//分类的路径
+	
+	@JsonProperty("nodes")
+	private List<Category> children;
+	
+	public List<Category> getChildren() {
+		return children;
+	}
+	public void setChildren(List<Category> children) {
+		this.children = children;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -50,9 +61,18 @@ public class Category implements Serializable{
 		this.name = name;
 		this.path = path;
 	}
+	public Category(Integer id, Integer parentId, String name, String path, List<Category> children) {
+		super();
+		this.id = id;
+		this.parentId = parentId;
+		this.name = name;
+		this.path = path;
+		this.children = children;
+	}
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", parentId=" + parentId + ", name=" + name + ", path=" + path + "]";
+		return "Category [id=" + id + ", parentId=" + parentId + ", name=" + name + ", path=" + path + ", children="
+				+ children + "]";
 	}
 	public Category() {
 		super();
